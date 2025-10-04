@@ -60,7 +60,7 @@ a {
   text-decoration: none;
 }
 
-a: hover{
+a:hover {
   color: #EAF6F6
 }
 .top-container {
@@ -173,3 +173,395 @@ a: hover{
   background-image: linear-gradient(to bottom, #30e3cb, #2bc4ad);
   text-decoration: none;
 }
+
+:root{
+  --ink:#24323d;
+  --muted:#6b7b8a;
+  --accent:#2bc4ad;
+  --accent-2:#66BFBF;
+  --rail:#e6eef1;
+  --bg:#f7fbfb;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: "Albert Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.visually-hidden{
+  position:absolute!important;
+  height:1px;width:1px;overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  white-space:nowrap;
+}
+
+.site-header{
+  text-align:center;
+  padding: 32px 16px 8px;
+}
+.title{
+  margin:0 0 6px;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--accent-2);
+  letter-spacing: .3px;
+}
+.subtitle{
+  margin:0;
+  color: var(--muted);
+}
+
+.hero-photo{
+  display:flex;
+  justify-content:center;
+  padding: 16px 16px 8px;
+}
+.hero-photo img{
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Timeline wrapper */
+.timeline-wrap{
+  max-width: 1100px;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* Scroll buttons */
+.timeline-controls{
+  position: absolute;
+  right: 16px;
+  top: -10px;
+  display: flex;
+  gap: 8px;
+}
+.tl-btn{
+  border: 1px solid var(--rail);
+  background: white;
+  border-radius: 10px;
+  width: 36px; height: 36px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.tl-btn:hover{background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.08)}
+
+/* The horizontal rail */
+.timeline{
+  display:flex;
+  align-items:flex-start;
+  overflow-x:auto;
+  scrollbar-width: thin;
+  gap: 0;
+  padding: 36px 8px 20px;
+  border-top: 2px solid var(--rail);
+  border-bottom: 2px solid var(--rail);
+  scroll-snap-type:x proximity;
+}
+
+/* Each tick/year */
+.tick{
+  position: relative;
+  min-width: 90px;
+  scroll-snap-align: start;
+  text-align:center;
+  padding-bottom: 28px;
+}
+.tick-year{
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Connector between ticks */
+.rail{
+  position:absolute;
+  top: 0;
+  left: 100%;
+  height: 0;
+  width: 40px;
+  border-top: 2px solid var(--rail);
+}
+
+/* Event pins (clickable) */
+.tick-events{
+  position: relative;
+  height: 48px; /* space for pins */
+}
+.event-pin{
+  --size: 14px;
+  position: relative;
+  display:inline-block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  top: -8px; /* lift above rail */
+  margin: 0 8px;
+  transform: translateY(-50%) scale(1);
+  transition: transform .18s ease, box-shadow .18s ease;
+  outline: none;
+}
+.event-pin:focus-visible{box-shadow:0 0 0 3px rgba(43,196,173,.35)}
+.event-pin:hover,
+.event-pin:focus{
+  transform: translateY(-50%) scale(1.5);
+  z-index: 2;
+}
+
+/* Title bubble shown on hover/focus */
+.event-bubble{
+  position: absolute;
+  left: 50%; bottom: calc(100% + 10px);
+  transform: translateX(-50%) scale(.9);
+  transform-origin: bottom center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  white-space: nowrap;
+  font-size: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.event-pin:hover .event-bubble,
+.event-pin:focus .event-bubble{
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Shift bubble right when near left edge */
+.event-bubble.shift-right {
+  left: 0;
+  transform: translateX(0) scale(.9);
+}
+
+/* Shift bubble left when near right edge */
+.event-bubble.shift-left {
+  left: auto;
+  right: 0;
+  transform: translateX(0) scale(.9);
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/* Footer panel */
+.timeline-footer{
+  display:grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 12px;
+  align-items:center;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--rail);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+.timeline-footer .tf-year{
+  font-weight: 700;
+  color: var(--accent-2);
+}
+.timeline-footer .tf-title{color: var(--ink)}
+.timeline-footer .tf-link a{
+  text-decoration:none;
+  color: var(--accent);
+  font-weight:600;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.timeline-footer .tf-link {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Mobile polish */
+@media (max-width: 768px){
+  .tick{min-width: 80px}
+  .timeline-footer{grid-template-columns: 56px 1fr}
+}
+
+/* Fix your original hover bug (keep if you reuse old styles) */
+a:hover{ color: #11999E; }
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.tick:first-child .event-bubble {
+  left: 0;
+  transform: translateX(0) scale(.9);
+}
+.tick:last-child .event-bubble {
+  left: auto;
+  right: 0;
+  transform: translateX(0) scale(.9);
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.tick:first-child .event-bubble {
+  left: 0;
+  transform: translateX(0) scale(.9);
+}
+.tick:last-child .event-bubble {
+  left: auto;
+  right: 0;
+  transform: translateX(0) scale(.9);
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.social-strip {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.social-strip a img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%) brightness(0.4);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.social-strip a:hover img,
+.social-strip a:focus img {
+  filter: none;
+  transform: scale(1.15);
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.bottom-container {
+  background: #66BFBF;
+  padding: 24px 0;
+  text-align: center;
+}
+.bottom-container a {
+  color: #fff;
+  margin: 0 12px;
+  text-decoration: none;
+}
+.bottom-container a:hover { text-decoration: underline; }
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.social-strip {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+/* .social-strip a img {
+  width: 24px; height: 24px;
+  filter: grayscale(100%) brightness(0.45);
+  transition: filter .2s ease, transform .2s ease;
+}
+.social-strip a:hover img,
+.social-strip a:focus img {
+  filter: none;
+  transform: scale(1.15);
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.social-strip a {
+  color: #66BFBF; /* default icon color */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-strip a svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  transition: transform .2s ease; /* animate the icon itself */
+}
+
+.social-strip a:hover {
+  color: #2bc4ad; /* hover color */
+}
+
+.social-strip svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.social-strip a:hover svg {
+  transform: scale(1.15);         /* scale icon on hover */
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/* Legend */
+.timeline-legend{
+  display:flex; gap:18px; justify-content:center;
+  font-size:.9rem; color:var(--muted); margin-top:10px;
+}
+.legend-item{ display:flex; align-items:center; gap:8px }
+.pin-sample{
+  width:14px; height:14px; display:inline-block;
+  border-radius:50%;
+  border:3px solid white; box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+/* Pin base (already defined as .event-pin) — we’ll extend with modifiers */
+.event-pin{ /* keep yours */ }
+
+/* HYBRID TYPES */
+.event-pin.pin-personal{
+  background:#fff;                 /* hollow look */
+  outline:2px solid var(--accent-2);
+}
+.event-pin.pin-professional{
+  background:var(--accent);        /* solid look */
+}
+
+/* Samples in legend mirror the look */
+.pin-sample.pin-personal{
+  background:#fff; outline:2px solid var(--accent-2); /*blue ring*/
+}
+.pin-sample.pin-professional{
+  background: var(--accent-2); border: 0;
+}
+
+
+/* Optional: add subtle glyph hints inside the pins */
+/*.event-pin.pin-personal::after,
+.event-pin.pin-project::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:inherit;
+}
+.event-pin.pin-personal::after{
+  /* tiny inner dot */
+/*  margin:4px; background:var(--accent-2); border-radius:50%;
+}
+.event-pin.pin-project::after{
+  /* diamond for projects */
+/*  width:8px; height:8px; margin:auto; background:#fff;
+  transform:rotate(45deg);
+  box-shadow:0 0 0 2px rgba(0,0,0,.05);
+}*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@NEW CODE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/* Personal pin: hollow blue ring */
+.event-pin.pin-personal{
+  background:#fff;
+  border:2px solid var(--accent-2);   /* ring */
+  outline:0;
+}
+.event-pin.pin-personal::after{ content:none; } /* remove inner dot */
+
+/* Project pin: filled blue dot */
+.event-pin.pin-professional{
+  background: var(--accent-2);
+  border:0;                           /* no white ring */
+  outline:0;
+}
+.event-pin.pin-professional::after{ content:none; }  /* remove diamond */

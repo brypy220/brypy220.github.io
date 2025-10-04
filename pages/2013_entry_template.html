@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal — [EVENT TITLE] · Bryon Fitzgerald Ward Jr.</title>
+
+  <!-- Use main styles + fonts from your site -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;500;700&family=News+Cycle&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:#24323d; --muted:#6b7b8a; --accent:#2bc4ad; --accent-2:#66BFBF; --rail:#e6eef1; --bg:#f7fbfb;
+    }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Albert Sans", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+    .journal-wrap {
+      max-width: 740px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    .journal-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .journal-date {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .journal-title {
+      font-family: "News Cycle", sans-serif;
+      font-size: clamp(26px, 4vw, 36px);
+      color: var(--accent-2);
+      margin: 0;
+    }
+    .journal-entry {
+      background: #fff;
+      border: 1px solid var(--rail);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+    }
+    .journal-entry p {
+      margin-bottom: 1.2em;
+    }
+    .journal-entry p:last-child {
+      margin-bottom: 0;
+    }
+    .journal-footer {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      color: #1fae98;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="journal-wrap">
+    <header class="journal-header">
+      <div class="journal-date">[Dec 28, 2013]</div>
+      <h1 class="journal-title">Life Changing Event </h1>
+    </header>
+
+    <article class="journal-entry">
+      <p>Two days after christmas I experienced something that would challenge me mentally, physically and emotionally.</p>
+      <p>An existential crisis.</p>
+      <p>The next decade was a roller coaster affecting, my relationships and career path, that ended with growth and me becoming the best version of myself to date.</p>
+    </article>
+
+    <div class="journal-footer">
+      Written from memory — reflections may be colored by time.
+    </div>
+
+    <a href="../index.html" class="back-link">← Back to Timeline</a>
+  </div>
+
+</body>
+</html>

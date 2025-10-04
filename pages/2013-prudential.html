@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/favicon_.ico?v=2" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAGE TITLE · Bryon Fitzgerald Ward Jr.</title>
+
+  <!-- Reuse your main styles + fonts -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;500;700&family=News+Cycle&display=swap" rel="stylesheet">
+
+  <!-- Page-specific minimal styles -->
+  <style>
+    :root {
+      --ink:#24323d; --muted:#6b7b8a; --accent:#2bc4ad; --accent-2:#66BFBF; --rail:#e6eef1; --bg:#f7fbfb;
+    }
+    body{ background: var(--bg); color: var(--ink); }
+
+    .article-wrap{
+      max-width: 860px; margin: 28px auto 56px; padding: 0 16px;
+      font-family: "Albert Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* Top band with subtle background + back link */
+    .article-hero{
+      background: linear-gradient(180deg,#E4F9F5 0%,#F7FBFB 100%);
+      border: 1px solid var(--rail); border-radius: 16px;
+      padding: 18px 18px;
+      display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    }
+    .crumbs a{ color: var(--muted); text-decoration: none; }
+    .crumbs a:hover{ color: var(--accent); text-decoration: underline; }
+
+    .article-title{ margin: 6px 0 0; font-size: clamp(22px, 4vw, 34px); color: var(--accent-2); font-family: "News Cycle", sans-serif; letter-spacing:.2px}
+    .article-meta{ color: var(--muted); font-size:.95rem; margin: 4px 0 0 }
+
+    .back-btn{
+      text-decoration:none; color: var(--accent); font-weight:600;
+      padding: 8px 12px; border:1px solid var(--rail); border-radius:10px; background:#fff;
+    }
+    .back-btn:hover{ color:#1fae98; box-shadow:0 6px 18px rgba(0,0,0,.08) }
+
+    /* Body */
+    .article-body{ margin-top: 22px; }
+    .lede{
+      background:#fff; border:1px solid var(--rail); border-radius:14px; padding:16px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+      color:#33424f;
+    }
+    .section{ margin-top: 22px; background:#fff; border:1px solid var(--rail); border-radius:14px; padding:18px }
+    .section h2{ margin:0 0 8px; font-size:1.2rem; color:#2c3b46 }
+    .section p{ margin:0 0 10px; line-height:1.7 }
+
+    .callout{
+      margin-top:18px; border-left:4px solid var(--accent-2); background:#f0fbfa;
+      padding:12px 14px; border-radius:10px;
+    }
+
+    .fact-grid{
+      margin-top: 10px; display:grid; gap:10px;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    }
+    .fact{ background:#fff; border:1px solid var(--rail); border-radius:12px; padding:12px }
+    .fact .k{ color: var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em }
+    .fact .v{ font-weight:700; margin-top:2px }
+
+    /* Prev/Next nav (optional) */
+    .pager{
+      margin-top: 26px; display:flex; justify-content: space-between; gap:10px;
+    }
+    .pager a{
+      flex:1; text-align:center; text-decoration:none; color: var(--accent);
+      border:1px solid var(--rail); border-radius:12px; padding:12px; background:#fff; font-weight:600;
+    }
+    .pager a:hover{ color:#1fae98; box-shadow:0 6px 18px rgba(0,0,0,.08) }
+  </style>
+</head>
+<body>
+
+  <div class="article-wrap">
+
+    <div class="article-hero">
+      <div>
+        <div class="crumbs">
+          <a href="../index.html">← Back to Timeline</a>
+        </div>
+        <h1 class="article-title">PAGE TITLE</h1>
+        <p class="article-meta">YEAR · Context / Role</p>
+      </div>
+      <a class="back-btn" href="../index.html">Timeline</a>
+    </div>
+
+    <main class="article-body">
+      <div class="lede">
+        <p><strong>One‑line summary:</strong> What was the key outcome or shift? Keep this concise and concrete.</p>
+      </div>
+
+      <section class="section">
+        <h2>Problem</h2>
+        <p>Brief setup — the situation, constraints, and stakes.</p>
+      </section>
+
+      <section class="section">
+        <h2>Approach</h2>
+        <p>What you did. Tools, methods, decisions, tradeoffs.</p>
+        <div class="fact-grid">
+          <div class="fact"><div class="k">Stack</div><div class="v">Linux · Wireshark · Suricata · Python</div></div>
+          <div class="fact"><div class="k">Focus</div><div class="v">Threat detection · Log analysis</div></div>
+          <div class="fact"><div class="k">Time</div><div class="v">2 weeks</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Result</h2>
+        <p>Quantify impact if possible. Example: “Reduced triage time 64% by automating auth.log parsing.”</p>
+        <div class="callout">
+          Tip or insight learned; or a link to a repo / artifact.
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="PREV_PAGE.html">← Previous</a>
+        <a href="NEXT_PAGE.html">Next →</a>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
